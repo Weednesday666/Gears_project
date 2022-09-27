@@ -14,7 +14,7 @@ class PaintController {
 class Fig {
     public int $ID;
     public ?string $name = null;
-    public ?string $picture;
+    public ?string $picture ;
     public ?string $content = null;
 
 
@@ -27,11 +27,12 @@ class Fig {
 
 
     // recuperation de toutes les infos des minis
-
+    //tri des minis pour un affichage par ordre alphabetique
+    //permet le tri automatique lors de l'affichage apres création des minis
     public static function getFigs () {
         $db = Db::getDb();
 
-        $query=$db->prepare("SELECT * FROM Fig");
+        $query=$db->prepare("SELECT * FROM Fig ORDER BY name");
         $query->execute();
 
         $query->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,get_class());
@@ -55,7 +56,7 @@ class Fig {
         $db = Db::getDb();
 
         $query=$db->prepare("SELECT Paint.* FROM Paint, link_fig2paint
-                WHERE Paint.ID = link_fig2paint.paint_ID AND link_fig2paint.fig_ID = :id ");
+                WHERE Paint.ID = link_fig2paint.paint_ID AND link_fig2paint.fig_ID = :id");
         $params= ['id'=> $ID];
         $query->execute($params);
 
@@ -67,6 +68,7 @@ class Fig {
         public function save(): int {
             $db = Db::getDb();
             $insertQuery = $db->prepare('INSERT INTO Fig (name , picture , content) VALUES (:name, :picture, :content)');
+
 
             $pushFig= [
                 'name'=> $this->name,

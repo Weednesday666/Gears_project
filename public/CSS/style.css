@@ -26,3 +26,12 @@
 li {
     list-style: none;
 }
+
+.delbut {
+    border: solid black 1px;
+    border-radius: 0.2em;
+    background-color: lightgray;
+    margin: 0.1em;
+
+
+}

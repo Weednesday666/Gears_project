@@ -7,6 +7,6 @@ class Render {
             $$key=$value;
         }
         // recuperation du layout pour render chaque templates
-        require 'src/vues/layout.php';
+        require 'src/vues/layout.phtml';
     }
 }

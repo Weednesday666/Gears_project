@@ -4,7 +4,7 @@ pick a mini and see what you need to paint it :
     <?php foreach($args['figs'] as $fig): ?>
     <li>
     <a href="display/<?= $fig->ID ?>"><?= $fig->name ?></a>
-    <button><a href="delete/<?= $fig->ID ?>"> delete</a></button>
+    <a href="delete/<?= $fig->ID ?>" class = "delbut"> delete</a>
     </li>
     <?php endforeach ?>
 </ul>

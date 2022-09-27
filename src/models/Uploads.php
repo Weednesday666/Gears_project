@@ -31,7 +31,7 @@ class Uploads {
 
 //Définit le répertoire dans lequel télécharger les fichiers utilisateurs
 
-    public function uploadFile(array $file, string $dossier = '', array &$errors, string $folder = UPLOADS_DIR, array $fileExtensions = FILE_EXT_IMG) {
+    public function uploadFile(array $file, string $dossier = '', array $errors, string $folder = UPLOADS_DIR, array $fileExtensions = FILE_EXT_IMG) {
         $filename = '';
         // On récupère l'extension du fichier pour vérifier si elle est dans $fileExtensions
         $tmpNameArray = explode(".", $file["name"]);
@@ -49,7 +49,7 @@ class Uploads {
                 // Détecte le type de contenu d'un fichier.
                 // On vérifie le contenue de fichier, pour voir s'il appartient aux MIMES autorises.
                 if(!in_array(mime_content_type($folder.$dossier."/".$filename), MIME_TYPES, true)) {
-                    // var_dump(mime_content_type($folder.$filename));
+                     var_dump(mime_content_type($folder.$filename));
                     $errors[] = "Le fichier n'a pas été enregistré correctement car son contenu ne correspond pas à son extension !";
                 }
             }

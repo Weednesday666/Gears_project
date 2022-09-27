@@ -26,7 +26,6 @@ class Router {
 
         if ($route_exploded[0] === 'addfig'){
             FigController::addFig();
-            PictureController::getPicture();
 
         }
 

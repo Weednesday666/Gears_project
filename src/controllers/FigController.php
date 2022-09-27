@@ -25,7 +25,7 @@ class FigController {
                     $dossier = "uploads";
                     $errors= [];
                     $model = new Uploads();
-                    // On l'uploade et on change la valeur de 'addImage' dans notre tableau
+                    // On l'upload et on change la valeur de 'addImage' dans notre tableau
                     $addArticle['addImage'] = $model->uploadFile($_FILES['picture'], $dossier, $errors);
                 }
 
