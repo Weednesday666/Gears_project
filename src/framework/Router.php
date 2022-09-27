@@ -1,0 +1,59 @@
+<?php
+
+class Router {
+    public static function route() {
+        $route = '';
+        if (isset($_GET['p'])) {
+            $route = $_GET['p'];
+        }
+
+
+        $route_exploded = explode('/', $route);
+        //change single quote for index when log is create
+        if ($route_exploded[0] === ''){
+            DefaultController::getFigList();
+        }
+
+
+        if ($route_exploded[0]==='display'){
+            $id = null;
+            if (preg_match("/^display\/(?<ID>[0-9]+)$/", $route, $matches)) {
+                $id = $matches['ID'];
+            }
+            FigController::showFig($id);
+        }
+
+
+        if ($route_exploded[0] === 'addfig'){
+            FigController::addFig();
+            PictureController::getPicture();
+
+        }
+
+
+        if ($route_exploded[0]=== 'update'){
+            $id = null;
+            if (preg_match("/^update\/(?<ID>[0-9]+)$/", $route, $matches)) {
+                $id = $matches['ID'];
+            }
+
+            FigController::updateFig($id);
+
+
+
+
+        }
+        if ($route_exploded[0]=== 'delete'){
+            $id = null;
+            if (preg_match("/^delete\/(?<ID>[0-9]+)$/", $route, $matches)) {
+                $id = $matches['ID'];
+            }
+            FigController::deleteFig($id);
+        }
+
+        //when log successfully create , change log to empty single quote
+        if ($route_exploded[0] === 'log'){
+        require 'src/vues/log-form.php';
+        }
+    }
+}

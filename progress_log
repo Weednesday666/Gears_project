@@ -1,0 +1,13 @@
+afficher chaque mini : check
+inserer sous checkbox Toutes les peintures : done , fuckin finally
+checker les peintures necessaires : check
+valider les peintures : check
+lier les peintures associée aux checkbox dans l'affichage de la mini : check
+afficher chaque mini avec les peintures associées : check
+afficher les images correctement : in progress
+
+current trouble :  pics displayed only when root files is in folder , otherwise , fuck it , display shit ...
+upload is ok and picture stored in folder with uniqid, in db , stored WITHOUT uniqid and displayed : none.
+during update : updated in db , push in uploads folder butt still not displayed correctly
+
+let's see with Micke because for now , fuckin braintwist -_-

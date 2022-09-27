@@ -1,0 +1,28 @@
+.paint {
+    width: 52px;
+    height: 62px;
+    margin: 1em;
+
+
+}
+
+
+.check {
+    display: flex;
+    margin: 0.3em;
+}
+
+.displayPaint {
+    display: flex;
+    margin: 1em;
+
+}
+
+.picture {
+    height: 300px;
+    width: auto;
+}
+
+li {
+    list-style: none;
+}
