@@ -26,12 +26,12 @@ class FigController {
                     $errors= [];
                     $model = new Uploads();
                     // On l'upload et on change la valeur de 'addImage' dans notre tableau
-                    $addArticle['addImage'] = $model->uploadFile($_FILES['picture'], $dossier, $errors);
+                    $imageName = $model->uploadFile($_FILES['picture'], $dossier, $errors);
                 }
 
                 $fig = new Fig();
                 $fig->name = $_POST['name'];
-                $fig->picture = $_FILES['picture']['name'];
+                $fig->picture = $imageName;
                 $fig->content = $_POST['content'];
 
                 $fig->save();
@@ -71,7 +71,8 @@ class FigController {
                     $errors= [];
                     $model = new Uploads();
                     // On l'uploade et on change la valeur de 'addImage' dans notre tableau
-                    $addArticle['addImage'] = $model->uploadFile($_FILES['picture'], $dossier, $errors);
+                    $imageName = $model->uploadFile($_FILES['picture'], $dossier, $errors);
+
                 }
 
                 //Instancier un nouveau Fig
@@ -79,7 +80,7 @@ class FigController {
 
                 //Charger les données POST dans le Fig
                 $fig->name = $_POST['name'];
-                $fig->picture = $_FILES['picture']["name"];
+                $fig->picture = $imageName;
                 $fig->content = $_POST['content'];
                 // Lancer la méthode qui update le Fig
                 $fig->update($id);

@@ -52,7 +52,7 @@ class Router {
 
         //when log successfully create , change log to empty single quote
         if ($route_exploded[0] === 'log'){
-        require 'src/vues/log-form.php';
+        require 'src/vues/log-form.phtml';
         }
     }
 }

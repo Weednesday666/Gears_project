@@ -55,6 +55,7 @@ class Uploads {
             }
             else{
                 $errors[] = "Ce type de fichier n'est pas autorisé !";
+                
             }
         }
         else if($file["error"] == UPLOAD_ERR_INI_SIZE || $file["error"] == UPLOAD_ERR_FORM_SIZE) {
