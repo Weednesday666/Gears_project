@@ -10,7 +10,7 @@ class Router {
 
         $route_exploded = explode('/', $route);
         //change single quote for index when log is create
-        if ($route_exploded[0] === ''){
+        if ($route_exploded[0] === 'index'){
             DefaultController::getFigList();
         }
 
@@ -51,8 +51,8 @@ class Router {
         }
 
         //when log successfully create , change log to empty single quote
-        if ($route_exploded[0] === 'log'){
-        require 'src/vues/log-form.phtml';
+        if ($route_exploded[0] === ''){
+        //LogController::login();
         }
     }
 }

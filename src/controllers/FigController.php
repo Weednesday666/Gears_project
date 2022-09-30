@@ -48,7 +48,7 @@ class FigController {
 
 
             // retour sur la  page principale apres la creation de la mini
-            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL");
+            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index");
 
 
         }
@@ -91,7 +91,7 @@ class FigController {
             }
               // Redirection
 
-            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL");
+            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index");
             return;
 
         }
@@ -111,7 +111,7 @@ class FigController {
             $fig->deleteFig($id);
 
             // retour page principale apres delete de la mini
-            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL ");
+            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
             return;
         }
 

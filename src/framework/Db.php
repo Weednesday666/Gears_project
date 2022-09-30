@@ -13,7 +13,7 @@ class Db {
     }
     //connexion a la db
 
-    private static function connect() {
+    protected static function connect() {
         try{
         $db = parse_ini_file("src/.ini");
         $host = $db['host'];
