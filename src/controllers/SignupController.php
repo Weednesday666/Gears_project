@@ -1,22 +1,22 @@
 <?php
 
-class SignupContr{
+class SignupController  extends Signup{
 
     private $username;
     private $pwd;
-    private $pwdrepeat;
+    private $pwdRepeat;
     private $email;
 
-    public function __construct($username, $pwd, $pwdrepeat, $email){
+    public function __construct($username, $pwd, $pwdRepeat, $email){
 
-        $this->$username = $username;
+        $this->username = $username;
         $this->pwd = $pwd;
-        $this->pwdrepeat = $pwdrepeat;
+        $this->pwdRepeat = $pwdRepeat;
         $this->email = $email;
 
     }
 
-    private function signupUser(){
+    public function signupUser(){
         if($this->emptyInput() == false){
             // echo "empty input ! ";
             header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=emptyinput");
@@ -43,13 +43,13 @@ class SignupContr{
             exit;
         }
 
-        $this->setUser();
+        $this->setUser($this->username, $this->pwd , $this->email);
     }
 
 
-    private function emptyInput() {
+    public function emptyInput() {
        $result;
-        if(empty($this->$username) || empty($this->$pwd) || empty($this->$pwdrepeat) ||empty($this->$email)){
+        if(empty($this->username) || empty($this->pwd) || empty($this->pwdRepeat) ||empty($this->email)){
 
             $result = false;
         }
@@ -84,7 +84,7 @@ class SignupContr{
 
     private function pwdMatch(){
         $result;
-        if($this->pwd !== $this->pwdrepeat){
+        if($this->pwd !== $this->pwdRepeat){
 
             $result = false;
         }
@@ -97,7 +97,7 @@ class SignupContr{
 
     private function usernameTakenCheck(){
         $result;
-        if($this->checkUser($this->$username, $this->$email)){
+        if(!$this->checkUser($this->username, $this->email)){
 
             $result = false;
         }

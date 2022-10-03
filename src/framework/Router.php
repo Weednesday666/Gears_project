@@ -52,7 +52,13 @@ class Router {
 
         //when log successfully create , change log to empty single quote
         if ($route_exploded[0] === ''){
-        //LogController::login();
+        //SignupController::signupUser();
+        Render::render("sign-up");
+        }
+
+         if ($route_exploded[0] === 'signup'){
+        include("Signup.php");
+        Render::render("sign-up");
         }
     }
 }
