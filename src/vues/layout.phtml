@@ -11,7 +11,7 @@
 <body>
 
     <?php
-
+if (isset($_SESSION["user"])){
     // header
     require 'src/vues/navbar.phtml';
 
@@ -23,7 +23,17 @@
     // footer
     require 'src/vues/footer.phtml';
 
+    }else{
+        if(isset($layout)){
+            require $layout.'.phtml';
+        }
+    }
+
+
+    //think to redo your if isset session and hide what's need to be
+
     ?>
+
 
 
 </body>

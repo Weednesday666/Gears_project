@@ -9,7 +9,6 @@ class Router {
 
 
         $route_exploded = explode('/', $route);
-        //change single quote for index when log is create
         if ($route_exploded[0] === 'index'){
             DefaultController::getFigList();
         }
@@ -52,13 +51,17 @@ class Router {
 
         //when log successfully create , change log to empty single quote
         if ($route_exploded[0] === ''){
-        //SignupController::signupUser();
-        Render::render("sign-up");
+        //Render::render("sign-up");
+        Render::render("log-form");
         }
 
          if ($route_exploded[0] === 'signup'){
-        include("Signup.php");
-        Render::render("sign-up");
+        include("src/controllers/SignupController.php");
+
+        }
+
+        if ($route_exploded[0] === 'login'){
+            include("src/controllers/LoginController.php");
         }
     }
 }

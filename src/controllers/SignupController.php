@@ -18,32 +18,33 @@ class SignupController  extends Signup{
 
     public function signupUser(){
         if($this->emptyInput() == false){
-            // echo "empty input ! ";
-            header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=emptyinput");
+             echo "empty input ! ";
+            //header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=emptyinput");
             exit;
         }
         if($this->invalidUsername() == false){
-            // echo "invalid Username ! ";
-            header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=username");
+             echo "invalid Username ! ";
+            //header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=username");
             exit;
         }
         if($this->invalidEmail() == false){
-            // echo "invalid email ! ";
-            header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=email");
+             echo "invalid email ! ";
+            //header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=email");
             exit;
         }
          if($this->pwdMatch() == false){
-            // echo "passwords don't match ! ";
-            header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=passwordmatch");
+             echo "passwords don't match ! ";
+            //header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=passwordmatch");
             exit;
         }
          if($this->usernameTakenCheck() == false){
-            // echo "username or email already taken ! ";
-            header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=userormailtaken");
+             echo "username or email already taken ! ";
+            //header ("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=userormailtaken");
             exit;
         }
 
         $this->setUser($this->username, $this->pwd , $this->email);
+
     }
 
 
@@ -57,6 +58,7 @@ class SignupController  extends Signup{
             $result = true;
         }
         return $result;
+
     }
 
     private function invalidUsername() {
@@ -110,4 +112,26 @@ class SignupController  extends Signup{
 
 
 
+}
+
+if(isset($_POST)  && !empty($_POST)){
+
+    //recuperation des données
+    $username = $_POST["username"];
+    $pwd = $_POST["pwd"];
+    $pwdRepeat = $_POST["pwdRepeat"];
+    $email = $_POST["email"];
+
+    //instanciation de la classe signup
+
+    $signup = new SignupController($username, $pwd, $pwdRepeat, $email);
+
+
+
+    //gestion des erreurs
+    $signup->signupUser();
+
+
+    //retour a la homepage
+    header("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=none" );
 }
