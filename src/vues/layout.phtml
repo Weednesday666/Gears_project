@@ -25,7 +25,8 @@ if (isset($_SESSION["user"])){
 
     }else{
         if(isset($layout)){
-            require $layout.'.phtml';
+            require 'src/vues/log-form.phtml';
+            require 'src/vues/sign-up.phtml';
         }
     }
 

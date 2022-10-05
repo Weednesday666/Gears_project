@@ -38,6 +38,8 @@ class LoginController  extends Login{
         return $result;
 
     }
+
+    
 }
 
 
@@ -54,7 +56,7 @@ if(isset($_POST)  && !empty($_POST)){
 
     //gestion des erreurs
     $login->getUser($username , $pwd);
-    
+
 
     //retour a la homepage
     header("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index" );

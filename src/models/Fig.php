@@ -14,7 +14,7 @@ class PaintController {
 class Fig {
     public int $ID;
     public ?string $name = null;
-    public ?string $picture ;
+    public ?string $picture;
     public ?string $content = null;
 
 
@@ -48,6 +48,16 @@ class Fig {
         $query->execute($params);
         $query->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,get_class());
 
+        return $query->fetchAll();
+    }
+    //recuperation des couyleurs affectées a la figurine via son ID
+     public static function getColorByFig($ID){
+        $db = Db::getDb();
+        $query=$db->prepare("SELECT paint_ID FROM link_fig2paint WHERE fig_ID= :id");
+
+        $params= ['id'=> $ID];
+        $query->execute($params);
+        
         return $query->fetchAll();
     }
 

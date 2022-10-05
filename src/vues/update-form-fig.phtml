@@ -17,7 +17,7 @@ $paints = Paint::getPaints();
     foreach($paints as $paint) {
         ?>
             <div class="check">
-                <input type="checkbox" name="paintChecker[]" value="<?= $paint->ID ?>"/>
+                <input type="checkbox" <?php if(in_array($paint->ID, $tab)) echo"checked" ;?>  name="paintChecker[]" value="<?= $paint->ID ?>"/>
                     <label  for="paint" >
                         <div class="paint"><?= $paint->color_picture ?> <?= $paint->color_name ?>
                         </div>

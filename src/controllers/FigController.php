@@ -18,6 +18,7 @@ class FigController {
 
         // Traite les données du formulaire
         if (!empty($_POST)) {
+            $imageName = 'picture.png';
             if (isset($_POST['name']) && isset($_FILES['picture']['name']) ) {
                  // Si une nouvelle image a été chargée
                 if(isset($_FILES['picture']) && $_FILES['picture']['name'] !== '') {
@@ -36,6 +37,7 @@ class FigController {
 
                 $fig->save();
 
+
                 // Traitement des peintures
                 if (isset($_POST['paintChecker'])){
                     foreach ($_POST['paintChecker'] as $paint_id) {
@@ -50,7 +52,6 @@ class FigController {
             // retour sur la  page principale apres la creation de la mini
             header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index");
 
-
         }
 
         // affichage du formulaire de creation de la mini
@@ -62,11 +63,23 @@ class FigController {
         //Vérifier qu'on a des données POST
         $fig = new Fig();
         $figDetail= $fig->getFig($id);
-        //var_dump($fig[0]->name);die;
+        $imageName = $figDetail[0]->picture;
+        $colors = $fig->getColorByFig($id);
+        $tab=[];
+        foreach ($colors as $color){
+            $tab[]= $color['paint_ID'];
+        }
+
+        //var_dump($tab);die;
+
         if (!empty($_POST)) {
             if (isset($_POST['name']) && isset($_FILES['picture']) && isset($_POST['content'])) {
                 // Si une nouvelle image a été chargée
                 if(isset($_FILES['picture']) && $_FILES['picture']['name'] !== '') {
+                    if($imageName !== 'picture.png'){
+                        unlink('public/uploads/'.$imageName );
+                    }
+
                     $dossier = "uploads";
                     $errors= [];
                     $model = new Uploads();
@@ -95,7 +108,7 @@ class FigController {
             return;
 
         }
-        Render::render("update-form-fig",["figDetail"=>$figDetail]);
+        Render::render("update-form-fig",["figDetail"=>$figDetail,'tab'=>$tab]);
     }
 
 
@@ -105,8 +118,6 @@ class FigController {
             $fig = new Fig();
             $fig->ID = $id;
 
-            // D'abord on supprime les clés étrangères
-            //$fig->deletePaints($id);
             // Ensuite on supprime la figurine
             $fig->deleteFig($id);
 
@@ -114,10 +125,5 @@ class FigController {
             header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
             return;
         }
-
     }
-
-
-
-
 }

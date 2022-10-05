@@ -51,7 +51,6 @@ class Router {
 
         //when log successfully create , change log to empty single quote
         if ($route_exploded[0] === ''){
-        //Render::render("sign-up");
         Render::render("log-form");
         }
 
@@ -62,6 +61,10 @@ class Router {
 
         if ($route_exploded[0] === 'login'){
             include("src/controllers/LoginController.php");
+        }
+
+        if ($route_exploded[0] === 'logout'){
+            include("src/controllers/LogoutController.php");
         }
     }
 }

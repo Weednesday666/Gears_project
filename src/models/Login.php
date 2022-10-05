@@ -7,8 +7,7 @@ class Login extends Db {
         $stmt = $this->connect()->prepare('SELECT * FROM user WHERE username = ? OR email = ?;');
         $stmt->execute(array($username , $username));
         $result= $stmt->fetch(PDO::FETCH_ASSOC);
-        var_dump($result);
-        var_dump($pwd);
+
 
         if($result !== false && password_verify($pwd, $result['password'])) {
 
@@ -20,7 +19,8 @@ class Login extends Db {
                 exit();
 
             }else{
-                header("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=stmtfailed");
+                echo "username or password invalid";
+                //header("location: https://thomascavelier.sites.3wa.io/GEARS_FINAL?error=stmtfailed");
                 exit();
 
             }

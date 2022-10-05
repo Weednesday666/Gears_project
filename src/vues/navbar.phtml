@@ -2,10 +2,12 @@
 
 <nav>
     <ul>
+        <li>you are logged as <?= $_SESSION['user']["username"]; ?> , welcome</li>
         <li><a href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/index">HOME</a></li>
         <li><a href = "https://thomascavelier.sites.3wa.io/GEARS_FINAL/addfig">Add your mini</a></li>
-        <li><a href="https://thomascavelier.sites.3wa.io/GEARS_FINAL">temporary test display ( set to be destroyed)</a></li>
-        <li><a href= './'> let me out ! </a></li>
+        <li><form method="post" action="https://thomascavelier.sites.3wa.io/GEARS_FINAL/logout">
+        <input type="submit" name="submit" value="LOGOUT" />
+            </form></li>
     </ul>
 </nav>
 

@@ -1,14 +1,41 @@
-afficher chaque mini : check
-inserer sous checkbox Toutes les peintures : done , fuckin finally
-checker les peintures necessaires : check
-valider les peintures : check
-lier les peintures associée aux checkbox dans l'affichage de la mini : check
-afficher chaque mini avec les peintures associées : check
-afficher les images correctement : fuckin finally done ... shit was tough...
-creer un log : in progress
+creer un compte : check
+    gerer les erreurs :
+        pseudo foireux : check
+        pseudo deja pris : check
+        password non correspondant : check
+        mail invalide : check
+        champs vide : check
+        gestion des erreurs lors de la creation du compte : check tout
+        rapidité de retrait du formulaire de créa par le sysadmin : check
 
-current trouble : 
+connexion : check
+    gerer les erreurs :
+        mauvais pseudo / mail et ou mot de passe : check
+        gestion des erreurs lors de la connexion : check tout
 
+logout : check
+
+affichage de la section log uniquement si pas log : check
+
+arrivée sur la page principale: check
+
+affichage de la liste des minis par ordre alphabetique: check
+
+creation de la mini : check
+    uniquement le nom est necessaire a la creation : check
+    affichage d'une image par defaut au lieu de lien vide : check
+
+update de la mini : check
+    conservation du nom : check 
+    conservation des photos envoyées : check 
+    conservation du fluff : check 
+    conservation des peintures et preselection : check 
+
+delete de la mini : check
+
+
+
+current trouble : need cafein ... 
 
 
 
