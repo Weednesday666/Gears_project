@@ -1,32 +1,34 @@
 <!--formulaire de creation de la figurine -->
-
 <!--creation du nom et du lore-->
-
 declaim the name , picture(2mb max ) and story of your mini
+<!--formulaire avec une "balise " qui permet l'upload de fichiers-->
 <form method="post" action ="" enctype="multipart/form-data">
+    <!--declaration du nom de la mini , champ requis et le formulaire ne poeut etre validé si'il est vide-->
     <input type="text" name="name" value="" required="required" placeholder="mini name here (required) "/>
+    <!--champ d'upload du fichier image -->
     <input type="file" name="picture" action"" accept="image/png, image/jpeg, image/jpg"/>
-
+    <!--champ d'ecriture libre ou on declare le fluff de la figurine, peut etre modifié aux dimensions voulu -->
     <textarea name="content" value=""  rows='5' cols= '40'  placeholder ="your fluff here (can be declaim later ) "></textarea>
+    <!--champ d'envoi du formulaire sous forme de bouton-->
     <input type="submit" name="button" value="Submit"/>
     <br>
-
-
 
     <!--section selection de la peinture-->
     Now , select the paint you'll need to apply to your mini : <br>
     <?php
+    //recuperation des peintures en vue de l'affichage de celles ci
     $paints = Paint::getPaints();
     ?>
-
     <?php
-
+    //pour chaque peinture en tant qu'unité
     foreach($paints as $paint) {
         ?>
         <div class="check">
+            <!--champ de cochage des figurines , il servira a selectionner celle que l'on veut pour ensuite les upload-->
             <input type="checkbox" name="paintChecker[]" value="<?= $paint->ID ?>"/>
                 <label  for="paint" >
-                    <div class="paint"><?= $paint->color_picture ?> <?= $paint->color_name ?>
+                    <!--affichage des peintures par leur image ( au format blob dans le db et des noms de celle ci, protegé-->
+                    <div class="paint"><?= $paint->color_picture ?> <?= htmlspecialchars($paint->color_name) ?>
                     </div>
                 </label>
         </div>
@@ -34,9 +36,5 @@ declaim the name , picture(2mb max ) and story of your mini
         <?php
     }
     ?>
-
+<!--fin de formulaire-->
 </form>
-
-
-
-<!--SET YOUR FIELD PICTURE IN FILE TYPE AND MAKE IT WORK !!!! -->

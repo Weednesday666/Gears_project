@@ -1,5 +1,5 @@
 <?php
-
+//on etabli une class render pour utiliser celle ci afin d'afficher rapidement un template
 class Render {
     public static function render($template = '', $args = []) {
         $layout = $template;

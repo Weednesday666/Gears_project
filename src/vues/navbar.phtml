@@ -1,13 +1,18 @@
 <!--navbar pour une navigation plus rapide sur le site-->
-
 <nav>
     <ul>
+        <!--affichage indiquant sous quel compte l'utilisateur est loggé-->
         <li>you are logged as <?= $_SESSION['user']["username"]; ?> , welcome</li>
+        <!--lien de renvoi a la page principale du site-->
         <li><a href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/index">HOME</a></li>
+        <!--lien de renvoi vers le formulaire de creation d'une mini-->
         <li><a href = "https://thomascavelier.sites.3wa.io/GEARS_FINAL/addfig">Add your mini</a></li>
+        <!--formulaire de deconnexion de l'utilisateur-->
         <li><form method="post" action="https://thomascavelier.sites.3wa.io/GEARS_FINAL/logout">
-        <input type="submit" name="submit" value="LOGOUT" />
-            </form></li>
+            <!--bouton de deconnexion et renvoi vers la page de connexion-->
+            <input type="submit" name="submit" value="LOGOUT" />
+            <!--fin du formulaire-->
+        </form></li>
     </ul>
 </nav>
 

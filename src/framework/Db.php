@@ -12,7 +12,6 @@ class Db {
         }
     }
     //connexion a la db
-
     protected static function connect() {
         try{
         $db = parse_ini_file("src/.ini");
@@ -20,13 +19,12 @@ class Db {
         $name = $db['name'];
         $user = $db['user'];
         $pass = $db['pass'];
-            self::$db = new PDO(
-                'mysql:host='.$host.';port=3306;dbname='.$name.";charset=utf8",$user,$pass
-            );
-        }catch(PDOException $e){
+            self::$db = new PDO('mysql:host='.$host.';port=3306;dbname='.$name.";charset=utf8",$user,$pass);
+        }
+        catch(PDOException $e){
             die("ERROR: Could not connect. " . $e->getMessage());
         }
-            return self::$db;
+        return self::$db;
     }
 
 }

@@ -3,39 +3,56 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!--declaration basique pour une page en html-->
     <meta charset="UTF-8">
+    <!--lien pour afficher la petite image dans le nom l'onglet-->
     <link rel="icon" type="image/png" href="https://seeklogo.com/images/X/Xbox_360_Gears_Of_War-logo-CC2C2C77F4-seeklogo.com.png">
+    <!--lien vers le feuille de css -->
     <link rel="stylesheet" type="text/css" href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/public/CSS/style.css">
-    <title>Gears mini painting guide</title>
+    <!--nom de l'onglet-->
+    <title>Gears minis painting guide</title>
 </head>
+<!--debut de l'affichage de la page-->
 <body>
 
     <?php
+    //si la session est active suite a la connexion de l'utilisateur
 if (isset($_SESSION["user"])){
-    // header
+    // on affiche la navbar dans le header
     require 'src/vues/navbar.phtml';
 
-    // main
+    // on affiche le main , celui ci est dicté par le template
     if (isset($layout)) {
         require $layout.'.phtml';
     }
 
-    // footer
+    // on affiche le footer qui contient des infos diverses , CGU contact etc
     require 'src/vues/footer.phtml';
-
+    //sinon
     }else{
+        //si la session n'est pas activée part la connexion de l'utilisateur
         if(isset($layout)){
+            // /!\ il n'est afficher que le formulaire de connexion , voir en bas de page /!\
+            //fichier requis pour afficher la vue
             require 'src/vues/log-form.phtml';
+            //autorisation d'affichage
+            $authorize = parse_ini_file("src/.ini");
+            //declaration de l'acces au formulaire
+            $access = $authorize['access'];
+            //si la condition est de 1 , le formulaire s'affiche , sinon , il ne s'affiche pas
+            if($access == 1){
+            //fichier necessaire pour afficher la vue
             require 'src/vues/sign-up.phtml';
+            }
         }
     }
 
-
-    //think to redo your if isset session and hide what's need to be
-
     ?>
-
-
-
 </body>
 </html>
+<!-- le formulaire d'inscripption n'est pas visible de tous et pas tout le temps
+le site etant penser comme un site vitrine , il n'est gerable que par l'utilisateur final
+celui ci peut demander a loisir a son sysadmin d'afficher le formulaire d'inscription
+afin de rajouter un utilisateur, de ce fait le second utilisateur aura les memes droits que lui
+il demandera par la suite son sysadmin de desactiver le formulaire d'inscription ( gerable via le fichier ini)
+afin de ne garder que le formulaire de connexion-->

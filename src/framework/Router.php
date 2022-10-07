@@ -7,12 +7,10 @@ class Router {
             $route = $_GET['p'];
         }
 
-
         $route_exploded = explode('/', $route);
         if ($route_exploded[0] === 'index'){
             DefaultController::getFigList();
         }
-
 
         if ($route_exploded[0]==='display'){
             $id = null;
@@ -22,23 +20,16 @@ class Router {
             FigController::showFig($id);
         }
 
-
         if ($route_exploded[0] === 'addfig'){
             FigController::addFig();
-
         }
-
 
         if ($route_exploded[0]=== 'update'){
             $id = null;
             if (preg_match("/^update\/(?<ID>[0-9]+)$/", $route, $matches)) {
                 $id = $matches['ID'];
             }
-
             FigController::updateFig($id);
-
-
-
 
         }
         if ($route_exploded[0]=== 'delete'){
@@ -49,7 +40,6 @@ class Router {
             FigController::deleteFig($id);
         }
 
-        //when log successfully create , change log to empty single quote
         if ($route_exploded[0] === ''){
         Render::render("log-form");
         }

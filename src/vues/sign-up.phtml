@@ -1,10 +1,16 @@
+<!--formulaire d'inscription-->
 <form action = "https://thomascavelier.sites.3wa.io/GEARS_FINAL/signup" method ="post">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="pwd" placeholder="password">
-    <input type="password" name="pwdRepeat" placeholder="repeat password">
-    <input type="text" name="email" placeholder="E-mail">
+    <!--champ de declaration du pseudo, champ requis , ne peut etre vide-->
+    <input type="text" name="username" required= "required" placeholder="username">
+    <!--champ de declaration du mot de passe , requis, ne peut etre vide-->
+    <input type="password" name="pwd" required= "required" placeholder="password">
+    <!--champ de verification de la concordance des mots de passe -->
+    <input type="password" name="pwdRepeat" required= "required" placeholder="repeat password">
+    <!--champ de declaration de l'email-->
+    <input type="text" name="email" required= "required" placeholder="E-mail">
+    <!--bouton d'envoi du formulaire-->
     <button type="submit" name="submit"> SIGN UP  </button>
 </form>
 <p> /!\ le formulaire ne prends en compte que les caracteres "normaux" et les chiffres de 0 a 9<br>
-/!\ce formulaire n'est visible que sur activation du sysadmin et n'est pas destiné a rester afficher sur cette page<br>
-/!\il n'est la qu'a but de tester les failles de securité , d'ailleurs ce texte est voué a disparaitre aussi </p>
+/!\ ce formulaire n'est visible que sur activation du sysadmin et n'est pas destiné a rester afficher sur cette page<br>
+/!\ il n'est la qu'a but de tester les failles de securité , d'ailleurs ce texte est voué a disparaitre aussi </p>

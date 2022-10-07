@@ -1,25 +1,28 @@
 <!--formmulaire de MAJ de la figurine -->
 
-<!--champ auto rempli pour update nom/image/lore-->
+<!--formulaire permettant l'envoi de fichier grace a son enctype-->
 <form method="post" action="" enctype = "multipart/form-data" >
+    <!--champ du nomn de la mini , pré rempli par les valeurs donnés a la creation de celle ci -->
 <input type="text" name="name" required="required" value="<?= $figDetail[0]->name?>"/>
+<!--champ d'upload de l'image , si rien n'est toucher lors de l'update , elle conserve sa valeur precedemment donnée-->
 <input type="file" name="picture" accept="image/png, image/jpeg" />
+<!--champ de declaration du fluff , rempli avec les valeurs données lors de la creation de la mini-->
 <textarea name="content" rows="5" cols= "50"><?= $figDetail[0]->content ?></textarea>
+<!--champ d'envoi du formulaire de mise a jour de la mini-->
 <input type="submit" name="button" value="update"/>
-
-
-
 <br>
-/!\ when updating paint , set all the colors and upload picture again (2mb max)  /!\
 <?php
+//recuperation des peintures
 $paints = Paint::getPaints();
     //selection des peintures a update
     foreach($paints as $paint) {
         ?>
             <div class="check">
+                <!--champ de cochage des peintures , si celles ci ont été selectionner , leur valeur est conservée lors de la mise a jour et deja coché -->
                 <input type="checkbox" <?php if(in_array($paint->ID, $tab)) echo"checked" ;?>  name="paintChecker[]" value="<?= $paint->ID ?>"/>
                     <label  for="paint" >
-                        <div class="paint"><?= $paint->color_picture ?> <?= $paint->color_name ?>
+                        <!--affichage des peintures par image et par nom-->
+                        <div class="paint"><?= $paint->color_picture ?> <?= htmlspecialchars($paint->color_name) ?>
                         </div>
                     </label>
             </div>
@@ -29,8 +32,3 @@ $paints = Paint::getPaints();
     ?>
     </form>
 
-
-
-
-
-<!--change your input to file here too -->

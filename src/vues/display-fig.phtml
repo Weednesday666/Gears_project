@@ -1,34 +1,42 @@
 <?php
 
     //disposition de l'affichage des minis
+    //pour chaque figurine en tant qu'unité ( ciblé par l'id pour ce cas)
     foreach($args['Fig'] as $figs): ?>
+    <!--on crée une liste contenant ce que l'on veut afficher-->
         <ul>
+            <!--ici le nom , proteger contre d'eventuels script placé lors de la création-->
             <li><?= htmlspecialchars($figs->name) ?></li>
+            <!--ici l'image avec son dossier parent et la aussi protegé contre les script potentiellement mis dans le nom -->
             <li> <img src="../public/uploads/<?= htmlspecialchars( $figs->picture) ?>" alt= "picture" class="picture"/></li>
+            <!--ici le fluff encore une fois protegé contre les scripts potentiels-->
             <li><?= htmlspecialchars($figs->content) ?></li>
         </ul>
-
-<?php endforeach ?>
+    <?php endforeach ?>
 
 
 <?php
-//disposition de l'affichage des peintures liées a la figurine
+    //disposition de l'affichage des peintures liées a la figurine
+    //on recupere peintures liée a la mini
     $paints = Fig::getFigPaints($figs->ID);
-
+    //pour chaque peinture en tant qu'unité ( ici ciblée par l'id)
     foreach($paints as $paint) {
         ?>
        <div >
            <div  class="displayPaint" >
-                <div class="paint" ><?= $paint->color_picture ?> <?= $paint->color_name ?></div>
-
+               <!--affichage du nom et image des peintures-->
+               <!--les images des peintures sont au format blob dans la db-->
+               <!--meme si on ne peut creer de nouvelles peintures et au'elles sont en dur dans la db on protege le nom des peintures-->
+                <div class="paint" ><?= $paint->color_picture ?> <?= htmlspecialchars($paint->color_name) ?></div>
            </div>
        </div>
         <?php
     }
     ?>
-
+<!--lien qui envoi sur un formulaire de mis a jour de la figurine ciblée par son id , la encore son nom est protegé-->
 <a href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/update/<?= $figs->ID ?>">Update  <?= htmlspecialchars($figs->name) ?> </a>
 </br>
-<a href='https://thomascavelier.sites.3wa.io/GEARS_FINAL'>Back to selection</a>
+<!--lien de renvoi vers la page principale du site-->
+<a href='https://thomascavelier.sites.3wa.io/GEARS_FINAL/index'>Back to selection</a>
 </br>
 

@@ -1,10 +1,13 @@
  pick a mini and see what you need to paint it :
 <!--affichage de la liste des mini -->
-
 <ul>
+    <!--pour chaque figurine en tant qu'unité -->
     <?php foreach($args['figs'] as $fig): ?>
     <li>
-    <a href="display/<?= $fig->ID ?>"><?= $fig->name ?></a>
+        <!--liste de liens menant vers la figurine specifique-->
+        <!--le champ du nom est protegé-->
+    <a href="display/<?= $fig->ID ?>"><?= htmlspecialchars($fig->name) ?></a>
+    <!--lien de suppression de la figurine ciblée-->
     <a href="delete/<?= $fig->ID ?>" class = "delbut"> delete</a>
     </li>
     <?php endforeach ?>
