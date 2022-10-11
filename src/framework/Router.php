@@ -17,7 +17,13 @@ class Router {
             if (preg_match("/^display\/(?<ID>[0-9]+)$/", $route, $matches)) {
                 $id = $matches['ID'];
             }
-            FigController::showFig($id);
+            if($id != null){
+                FigController::showFig($id);
+            }else{
+                header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
+            exit();
+            }
+
         }
 
         if ($route_exploded[0] === 'addfig'){
@@ -29,7 +35,12 @@ class Router {
             if (preg_match("/^update\/(?<ID>[0-9]+)$/", $route, $matches)) {
                 $id = $matches['ID'];
             }
-            FigController::updateFig($id);
+            if($id != null){
+                FigController::updateFig($id);
+            }else{
+                header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
+            exit();
+            }
 
         }
         if ($route_exploded[0]=== 'delete'){
@@ -37,7 +48,14 @@ class Router {
             if (preg_match("/^delete\/(?<ID>[0-9]+)$/", $route, $matches)) {
                 $id = $matches['ID'];
             }
-            FigController::deleteFig($id);
+            if($id != null){
+                FigController::deleteFig($id);
+            }else{
+                header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
+            exit();
+            }
+
+
         }
 
         if ($route_exploded[0] === ''){
@@ -55,6 +73,11 @@ class Router {
 
         if ($route_exploded[0] === 'logout'){
             include("src/controllers/LogoutController.php");
+        }
+
+         if ($route_exploded[0] === 'fig'){
+            include("src/controllers/FigController.php");
+            FigController::findAjax();
         }
     }
 }

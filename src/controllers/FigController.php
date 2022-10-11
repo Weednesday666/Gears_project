@@ -141,7 +141,26 @@ class FigController {
             $fig->deleteFig($id);
             // retour page principale apres delete de la mini
             header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
-            return;
+            exit();
         }
+    }
+     public static function findAjax(){
+         //recuperation du contenu de mon champ input dans fig-list.phtml
+        $content = file_get_contents("php://input");
+        //on utilise json_decode pour "traduire" ce que JS nous envoie
+        $data = json_decode($content, true);
+
+        if(isset($data['textToFind'])){
+            //on extrait de mon input ce qu'il s'y passe
+            $search = "%" . $data['textToFind'] . "%" ;
+            //on appelle la methode qui lancera la requete de recherche
+            $Figs = Fig::searchAjax($search);
+            //on visualise le resultat
+            include"src/vues/result-fig.phtml";
+        }else{
+            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
+            exit();
+        }
+
     }
 }

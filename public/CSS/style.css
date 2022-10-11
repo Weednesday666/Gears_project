@@ -35,3 +35,15 @@ li {
 
 
 }
+
+.fig-list {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+
+
+}
+
+.principal-picture {
+    width: 150px;
+}

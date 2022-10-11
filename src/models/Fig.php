@@ -189,7 +189,32 @@ class Fig {
         //on execute la requete
         $deleteQuery->execute($deleteFig);
     }
+
+    public static function searchAjax($search){
+        //on se connecte a la db
+        $db = Db::getDb();
+        //on prepare une requete qui va comparer le champ a ce qu'il trouve dans la db
+        //$gsm mean Get Specific Mini
+        $gsm = $db->prepare("SELECT * FROM Fig
+                                WHERE name
+                                LIKE :find
+                                ORDER BY name DESC");
+        //on bind les valeur pour eviter une dinguerie
+        $gsm->bindValue('find', $search , PDO::PARAM_STR);
+        //on execute la requete
+        $gsm->execute();
+        //on vient recuperer les données des minis
+        $Figs = $gsm->fetchAll(PDO::FETCH_ASSOC);
+        return $Figs;
+    }
 }
+
+
+
+
+
+
+
 
 
 

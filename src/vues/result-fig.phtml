@@ -1,0 +1,16 @@
+<!--affichage de la liste des mini -->
+    <ul>
+        <!--pour chaque figurine en tant qu'unité -->
+        <?php foreach($Figs as $fig): ?>
+        <!--liste de liens menant vers la figurine specifique-->
+        <li class="fig-list">
+            <!--affichage de l'image cliquable -->
+            <a href="display/<?= $fig['ID'] ?>"><img src="public/uploads/<?= htmlspecialchars( $fig['picture']) ?>" alt= "picture" class="principal-picture"/></a>
+            <!--le champ du nom est protegé-->
+            <a href="display/<?= $fig['ID'] ?>"><?= htmlspecialchars($fig['name'] ) ?></a>
+            <!--lien de suppression de la figurine ciblée-->
+            <a href="delete/<?= $fig['ID'] ?>" class = "delbut"> delete</a>
+        </li>
+        <?php endforeach ?>
+    </ul>
+
