@@ -1,6 +1,6 @@
 <!--navbar pour une navigation plus rapide sur le site-->
-<nav>
-    <ul>
+<nav class='navbar'>
+    <ul class ='ulnavbar'>
         <!--affichage indiquant sous quel compte l'utilisateur est loggé-->
         <li>you are logged as <?= $_SESSION['user']["username"]; ?> , welcome</li>
         <!--lien de renvoi a la page principale du site-->
@@ -10,7 +10,7 @@
         <!--formulaire de deconnexion de l'utilisateur-->
         <li><form method="post" action="https://thomascavelier.sites.3wa.io/GEARS_FINAL/logout">
             <!--bouton de deconnexion et renvoi vers la page de connexion-->
-            <input type="submit" name="submit" value="LOGOUT" />
+            <input type="submit" name="submit" class='submit' value="LOGOUT" />
             <!--fin du formulaire-->
         </form></li>
     </ul>

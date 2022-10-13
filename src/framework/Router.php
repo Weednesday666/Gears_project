@@ -21,9 +21,8 @@ class Router {
                 FigController::showFig($id);
             }else{
                 header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
-            exit();
+                exit();
             }
-
         }
 
         if ($route_exploded[0] === 'addfig'){

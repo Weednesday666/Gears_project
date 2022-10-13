@@ -161,6 +161,8 @@ class FigController {
             header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
             exit();
         }
+        
+        
 
     }
 }

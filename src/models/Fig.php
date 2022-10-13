@@ -38,6 +38,7 @@ class Fig {
         return $query->fetchAll();
     }
 
+
     //recuperation des infos d'une mini specifique
     public static function getFig($ID){
         //connexion a la db
@@ -51,8 +52,18 @@ class Fig {
         //on recupere dans la db les infos dont on a besoin
         $query->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,get_class());
         //on retourne la requete
-        return $query->fetchAll();
+        $result = $query->fetchAll();
+        //si le resultat de la requete ne renvoi rien
+        if(empty($result)){
+            //on renvoi sur l'index
+            header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
+                exit();
+        }
+        //et si elle existe, on la renvoie
+        return $result;
     }
+
+
 
     //recuperation des couleurs affectées a la figurine via son ID
      public static function getColorByFig($ID){
@@ -69,6 +80,7 @@ class Fig {
         //on retourne la requete
         return $query->fetchAll();
     }
+
 
     //recuperation du lien figurine / peinture
     public static function getFigPaints($ID) {
@@ -89,6 +101,7 @@ class Fig {
         return $query->fetchAll();
     }
 
+
     // creation d'une nouvelle Fig via le formulaire de crea (vues/form-fig.php)
         public function save(): int {
             //connexion a la db
@@ -108,6 +121,8 @@ class Fig {
             //on renvoi l'id en question
             return $this->ID;
         }
+
+
     //sauvegarde du lien mini/peinture
         public function savePaints(): void {
             //connexion a la db
@@ -126,6 +141,7 @@ class Fig {
             }
         }
 
+
     //mise a jour de la mini
     public function update($id) {
         //connexion a la db
@@ -143,6 +159,7 @@ class Fig {
         $updateQuery->execute($editFig);
     }
 
+
     // MAJ de peinture associé a la mini
     public function editPaints($id, $paintChecker) {
         //connexion ala db
@@ -159,8 +176,9 @@ class Fig {
                 //on execute la requete
                 $updateQuery->execute($editPaint);
             }
-
     }
+
+
      //suppression du lien mini/peinture
     public function deletePaints($id) {
         //connexion a la db
@@ -176,6 +194,7 @@ class Fig {
         $deleteQuery->execute($deletePaint);
     }
 
+
     //supression de la mini
     public function deleteFig($id): void {
         //connexion a la db
@@ -190,6 +209,7 @@ class Fig {
         $deleteQuery->execute($deleteFig);
     }
 
+
     public static function searchAjax($search){
         //on se connecte a la db
         $db = Db::getDb();
@@ -198,7 +218,7 @@ class Fig {
         $gsm = $db->prepare("SELECT * FROM Fig
                                 WHERE name
                                 LIKE :find
-                                ORDER BY name DESC");
+                                ORDER BY name");
         //on bind les valeur pour eviter une dinguerie
         $gsm->bindValue('find', $search , PDO::PARAM_STR);
         //on execute la requete
@@ -208,15 +228,3 @@ class Fig {
         return $Figs;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
