@@ -20,9 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(res => res.text())
             //ensuite on va afficher le resultat de la recherche dans le html
             .then(res => {
-                document.querySelector("#listOfFigs").innerHTML = res;
+                document.getElementById("listOfFigs").innerHTML = res;
             });
-
     });
 
 });
