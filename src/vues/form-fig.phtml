@@ -1,8 +1,8 @@
 <!--formulaire de creation de la figurine -->
 <!--creation du nom et du lore-->
-declaim the name , picture(2mb max ) and story of your mini
+<p>declaim the name , picture(2mb max ) and story of your mini</p>
 <!--formulaire avec une "balise " qui permet l'upload de fichiers-->
-<form method="post" action ="" enctype="multipart/form-data">
+<form method="post" action ="" enctype="multipart/form-data" class="formFig">
     <!--declaration du nom de la mini , champ requis et le formulaire ne poeut etre validé si'il est vide-->
     <input type="text" name="name" value="" required="required" placeholder="mini name here (required) "/>
     <!--champ d'upload du fichier image -->
@@ -14,7 +14,7 @@ declaim the name , picture(2mb max ) and story of your mini
     <br>
 
     <!--section selection de la peinture-->
-    Now , select the paint you'll need to apply to your mini : <br>
+    <p>Now , select the paint you'll need to apply to your mini :</p> <br>
     <?php
     //recuperation des peintures en vue de l'affichage de celles ci
     $paints = Paint::getPaints();
@@ -28,7 +28,7 @@ declaim the name , picture(2mb max ) and story of your mini
             <input type="checkbox" name="paintChecker[]" value="<?= $paint->ID ?>"/>
                 <label  for="paint" >
                     <!--affichage des peintures par leur image ( au format blob dans le db et des noms de celle ci, protegé-->
-                    <div class="paint"><?= $paint->color_picture ?> <?= htmlspecialchars($paint->color_name) ?>
+                    <div class="paint"><div class="ColorPicture"><?= $paint->color_picture ?></div> <div class="ColorName"><?= htmlspecialchars($paint->color_name) ?></div>
                     </div>
                 </label>
         </div>

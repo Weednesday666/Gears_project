@@ -9,6 +9,12 @@
     <link rel="icon" type="image/png" href="https://seeklogo.com/images/X/Xbox_360_Gears_Of_War-logo-CC2C2C77F4-seeklogo.com.png">
     <!--lien vers le feuille de css -->
     <link rel="stylesheet" type="text/css" href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/public/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!--liens pour les fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <!--nom de l'onglet-->
     <title>Gears minis painting guide</title>
 </head>
@@ -30,7 +36,7 @@ if (isset($_SESSION["user"])){
     require 'src/vues/footer.phtml';
     //sinon
     }else{
-        //si la session n'est pas activée part la connexion de l'utilisateur
+        //si la session n'est pas activée par la connexion de l'utilisateur
         if(isset($layout)){
             // /!\ il n'est afficher que le formulaire de connexion , voir en bas de page /!\
             //fichier requis pour afficher la vue

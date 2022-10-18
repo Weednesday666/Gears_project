@@ -18,8 +18,7 @@
         <a href="display/<?= $fig->ID ?>" ><img src="public/uploads/<?= htmlspecialchars( $fig->picture) ?>" alt= "picture" class="picture-list"/></a>
         <!--le champ du nom est protegé-->
         <a href="display/<?= $fig->ID ?>" class="namelink" ><?= htmlspecialchars($fig->name) ?></a>
-        <!--lien de suppression de la figurine ciblée-->
-        <a href="delete/<?= $fig->ID ?>" class = "delbut"> delete</a>
+
     </li>
     <?php endforeach ?>
 </ul>

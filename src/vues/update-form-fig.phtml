@@ -1,7 +1,7 @@
 <!--formmulaire de MAJ de la figurine -->
 
 <!--formulaire permettant l'envoi de fichier grace a son enctype-->
-<form method="post" action="" enctype = "multipart/form-data" >
+<form method="post" action="" enctype = "multipart/form-data" class="formFig">
     <!--champ du nomn de la mini , pré rempli par les valeurs donnés a la creation de celle ci -->
 <input type="text" name="name" required="required" value="<?= $figDetail[0]->name?>"/>
 <!--champ d'upload de l'image , si rien n'est toucher lors de l'update , elle conserve sa valeur precedemment donnée-->
@@ -22,7 +22,7 @@ $paints = Paint::getPaints();
                 <input type="checkbox" <?php if(in_array($paint->ID, $tab)) echo"checked" ;?>  name="paintChecker[]" value="<?= $paint->ID ?>"/>
                     <label  for="paint" >
                         <!--affichage des peintures par image et par nom-->
-                        <div class="paint"><?= $paint->color_picture ?> <?= htmlspecialchars($paint->color_name) ?>
+                        <div class="paint"><div class="ColorPicture"><?= $paint->color_picture ?></div> <div class="ColorName"><?= htmlspecialchars($paint->color_name) ?></div>
                         </div>
                     </label>
             </div>

@@ -1,18 +1,33 @@
 <!--navbar pour une navigation plus rapide sur le site-->
-<nav class='navbar'>
-    <ul class ='ulnavbar'>
-        <!--affichage indiquant sous quel compte l'utilisateur est loggé-->
-        <li>you are logged as <?= $_SESSION['user']["username"]; ?> , welcome</li>
-        <!--lien de renvoi a la page principale du site-->
-        <li><a href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/index">HOME</a></li>
-        <!--lien de renvoi vers le formulaire de creation d'une mini-->
-        <li><a href = "https://thomascavelier.sites.3wa.io/GEARS_FINAL/addfig">Add your mini</a></li>
-        <!--formulaire de deconnexion de l'utilisateur-->
-        <li><form method="post" action="https://thomascavelier.sites.3wa.io/GEARS_FINAL/logout">
-            <!--bouton de deconnexion et renvoi vers la page de connexion-->
-            <input type="submit" name="submit" class='submit' value="LOGOUT" />
-            <!--fin du formulaire-->
-        </form></li>
-    </ul>
-</nav>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <section class="top-nav">
+    <div>
+        <!--lien de renvoi a la page principale du site via l'image-->
+      <a href="https://thomascavelier.sites.3wa.io/GEARS_FINAL/index"><img src="https://cdn2.steamgriddb.com/file/sgdb-cdn/logo_thumb/c5f31ecf4111f3bbfa2b36f851379d6e.png" alt ="GearsLogo" class="GearsLogo"></a></img>
+    </div>
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+ <ul class="menu">
+     <!--affichage indiquant sous quel compte l'utilisateur est loggé-->
+            <li class="navlog">you are logged as <?= $_SESSION['user']["username"]; ?> , welcome</li>
+            <!--lien de renvoi vers le formulaire de creation d'une mini-->
+            <li><a href = "https://thomascavelier.sites.3wa.io/GEARS_FINAL/addfig">Add your mini</a></li>
+            <!--lien de renvoi vers le site officiel de gears of war-->
+            <li><a href = "https://www.gearsofwar.com/fr-ca/">Gears Of War official site</a></li>
+            <!--lien de renvoi vers le site officiel de games workshop-->
+            <li><a href = "https://www.games-workshop.com/fr-FR/Peinture-et-modélisme?N=1981014484+2401632303&Nr=AND%28sku.siteId%3AFR_gw%2Cproduct.locale%3Afr_FR_gw%29&Nrs=collection%28%29%2Frecord%5Bproduct.startDate+<%3D+1665995280000+and+product.endDate+>%3D+1665995280000%5D">Get your paints</a></li>
+            <!--formulaire de deconnexion de l'utilisateur-->
+            <li><form method="post" action="https://thomascavelier.sites.3wa.io/GEARS_FINAL/logout">
+                <!--bouton de deconnexion et renvoi vers la page de connexion-->
+                <input type="submit" name="submit" class='submit' value="LOGOUT" />
+                <!--fin du formulaire-->
+            </form></li>
+ </ul>
+  </section>
+
+
 

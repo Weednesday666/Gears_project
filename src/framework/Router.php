@@ -11,6 +11,10 @@ class Router {
         if ($route_exploded[0] === 'index'){
             DefaultController::getFigList();
         }
+        $route_exploded = explode('/', $route);
+        if ($route_exploded[0] === 'public-list'){
+            DefaultController::getPublicList();
+        }
 
         if ($route_exploded[0]==='display'){
             $id = null;
@@ -19,6 +23,19 @@ class Router {
             }
             if($id != null){
                 FigController::showFig($id);
+            }else{
+                header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
+                exit();
+            }
+        }
+
+        if ($route_exploded[0]==='public-display'){
+            $id = null;
+            if (preg_match("/^public-display\/(?<ID>[0-9]+)$/", $route, $matches)) {
+                $id = $matches['ID'];
+            }
+            if($id != null){
+                FigController::showPublicFig($id);
             }else{
                 header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
                 exit();

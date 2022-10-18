@@ -1,51 +1,213 @@
-/*section header*/
+/*main */
 
-.navbar {
-    background-color: rgba(191, 11, 10, 1);
-}
+/*tout ce qui est sur la page en general et qui n'a pas de lien avec le media display*/
 
+/*ex , le background est le meme sur tout le site , sur tout les supports, de meme que le logo ou les decos de listes*/
 
+/*CSS general du body */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.paint {
-    width: 52px;
-    height: 62px;
-    margin: 1em;
-
-
-}
-
-
-.check {
-    display: flex;
-    margin: 0.3em;
-}
-
-.displayPaint {
-    display: flex;
-    margin: 1em;
-
-}
-
-.picture {
-    height: 300px;
+body {
+    /*mise en place du fond d'ecran avec une image specifique, fixe */
+    background: url(wallGears.png) fixed;
+    /*le BG recouvre toutre la page*/
+    background-size: cover;
+    /*sa largeur se met en place d'elle meme, en ratio avec la hauteur*/
     width: auto;
+    /*sa hauteur prendra tout le temps toute la hauteur du support , peu importe sa taille*/
+    height: 100%;
+    /*on met la marge a zero pour que tout le contenu ne soit pas "flottant"et soit collé au bord du navigateur*/
+    margin: 0;
+}
+
+/*selecteur universel */
+
+* {
+    /*on garde avec cette commande toute les enfant dans les parents*/
+    /*en gros , on tasse dans les boites pour que rien ne ressorte de celles ci */
+    box-sizing: border-box;
+}
+
+/*logo GOW mis dans la navbar, elle est fixe en taille et renvoie grace au HTML a l'index*/
+
+.GearsLogo {
+    /*hauteur de 50px , fixe , peu importe le support*/
+    height: 50px;
+    /*largeur auto , en ratio avec sa hauteur*/
+    width: auto;
+}
+
+
+
+/*nav bar . Mise ici car son CSS principal reste le meme , peu importe le viewport*/
+
+.top-nav {
+
+    /*utilisation de flex*/
+    display: flex;
+    /*mise en page en ligne sur la longueur*/
+    flex-direction: row;
+    /*ses elements sont centré*/
+    align-items: center;
+    /*espacé de la meme longueur*/
+    justify-content: space-between;
+    /*degradé partant de la gauche de noir vers rouge utilisation du RGBA pour assigner des valeur precise et si besoin sa transparence*/
+    background: linear-gradient(to left, rgba(40, 40, 38, 1), rgba(69, 1, 2, 1));
+    /*couleur du texte , ici en hexadecimal*/
+    color: #FFFFFF;
+    /*taille de 50px fixe peu importe le support*/
+    height: 50px;
+    /*marge interne de 1em ( en lien avec la police) */
+    padding: 1em;
+    /*on trace une ligne sous le cadre de la navbar pour aider a se detacher du fond, ici , une ligne pleine en blanc sur 3pixel de hauteur*/
+    border-bottom: solid white 3px;
+    /*marge de 20 pixel sous la navbar , fixe , peu importe le support*/
+    margin-bottom: 20px;
+}
+
+/*dans la navbar , sppecifiquement sur les liens dans celle ci , au survol*/
+
+.top-nav a:hover {
+    /*on annule le style des liens en enlevant la barre en dessous du texte*/
+    text-decoration: none;
+}
+
+/*ici , menu est le nom de ma balise incluant mes liens ( ul entourant mes li ) */
+
+.menu {
+    /*on utilise le flex*/
+    display: flex;
+    /*on met en ligne*/
+    flex-direction: row;
+    /*on enleve le style de la liste ( ici les points specifiques au listes a puces)*/
+    list-style-type: none;
+    /*marge externereduite a 0*/
+    margin: 0;
+    /*marge interne reduite a 0*/
+    padding: 0;
+}
+
+/* gestion des liste dans ma balise ( les li dans mon ul ) */
+
+.menu li {
+    /*marge a 0.1 rem pour prendre en compte la police de la page en elle meme*/
+    margin: 0 1rem;
+    /*on "coupe "tout ce qui peux depasser*/
+    overflow: hidden;
+}
+
+/*ce bouton ne se voit qu'en viewport mobile et tablette , mais comme il est identique sur les 2 supports, je prefere le placer ici plutot que doubler mon code  pour chaque viewport*/
+
+.menu-button-container {
+    /*display none pour l'enlever des viewports desktop*/
+    display: none;
+    /*hauteur auto en ratio avec la largeur*/
+    height: auto;
+    /*largeur fixe de 30px*/
+    width: 30px;
+    /*lorsque le curseur est sur la zone du bouton , il devient le meme que lors d'un survol de lien*/
+    cursor: pointer;
+    /*mise en colonne */
+    flex-direction: column;
+    /*on centre son contenu*/
+    justify-content: center;
+    /*et les objets a l'interieur*/
+    align-items: center;
+}
+
+/*on recupere l'id ( et non la classe ) pour faire disparaitre la checkbox assignée ppour l'animation future*/
+
+#menu-toggle {
+    display: none;
+}
+
+/*on design le bouton en retouchant ce qui vient avant et apres lui */
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    /*on les place en block*/
+    display: block;
+    /*on met son fond en blanc , en hexa*/
+    background-color: #fff;
+    /*la position absolute pour qu'il reste la ou on lui impose d'etre*/
+    position: absolute;
+    /*hauteur de 4pixels*/
+    height: 4px;
+    /*latgeur de 30*/
+    width: 30px;
+    /*effet d'animation au click les differentes valeurs indique differentes directions*/
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    /*on arrondi le bord de la barre sur 2 pixels*/
+    border-radius: 2px;
+}
+
+/* cette "barre"stylisée viendra avant celle qui se situe au milieu */
+
+.menu-button::before {
+    /*son contenu est vide pour ne garder uniquement que ses bordures et en faire une sorte de dessin*/
+    content: '';
+    /*on etabli sa marge superieur pour qu'elle se place au dessus */
+    margin-top: -8px;
+}
+
+/*cette barre ci vient se placer en dessous*/
+
+.menu-button::after {
+    /*encore une fois , contenu vide , identique au before*/
+    content: '';
+    /*cette marge ci la fera se place en dessous de la barre du milieu*/
+    margin-top: 8px;
+}
+
+/*si la checkbox cachée est activée , la barre "superieure" voit : */
+
+#menu-toggle:checked+.menu-button-container .menu-button::before {
+    /* sa marge reduite a zero et donc disparait "dans la barre du milieu*/
+    margin-top: 0px;
+    /*tourne sur 405 degrés ( plutot que juste 45 , elle fait ici un tour complet avant) */
+    transform: rotate(405deg);
+}
+
+/*quand la check box est activée , on vient aussi changer sa couleur*/
+
+#menu-toggle:checked+.menu-button-container .menu-button {
+    /*ici , peu importe les valeurs RGB , on met son opacité a 0 et elle est donc totalement transparente*/
+    background: rgba(0, 0, 0, 0);
+}
+
+/*on applique ici les memes caracteristiques que pour l'element before*/
+
+#menu-toggle:checked+.menu-button-container .menu-button::after {
+    margin-top: 0px;
+    /*cependant , son axe est inversé pour plus de "coherence visuelle"*/
+    transform: rotate(-405deg);
+}
+
+
+
+
+/*fin de la navbar*/
+
+ul {
+    padding-right: 40px;
 }
 
 li {
     list-style: none;
+}
+
+
+p {
+    color: white;
+    margin: 1em;
+}
+
+
+/*changement de TOUT les liens , BG noir , police blanche pour plus de visibilité */
+
+a {
+    /*changement de couleur*/
+    color: white;
 }
 
 .delbut {
@@ -57,14 +219,551 @@ li {
 
 }
 
-.fig-list {
-    display: flex;
-    flex-direction: column;
-    width: 150px;
 
+/*police de la barre de recherche , identique sur tout supports */
+
+.search {
+    color: white;
+    margin: 1em;
+}
+
+
+
+
+
+/* CSS du formulaire de connexion*/
+
+/* on vient mettre en forme la page de connexion en y placant tout nos elemnents*/
+
+.LogForm {
+    /*on applique a l'interieur de notre "boite" qui contient les diferents champs une disposition flex*/
+    display: flex;
+    /*on les place en colonne*/
+    flex-direction: column;
+    /*on leur applique une marge externe, surtout pour le top , mais ici , peu importe , pas d'elements a coté*/
+    margin-top: 5em;
+    /*on centre le tout */
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    min-width: 20%;
+    max-width: 30%;
 
 }
 
-.principal-picture {
-    width: 150px;
+/*les 3 champs de notre formulaire seront identiques et donc seront definis en meme temps*/
+
+.NameInput,
+.PwdInput,
+.LogInput {
+    /*on arrondi les bords sur 10 pixels*/
+    border-radius: 10px;
+    /*on dessine une bordure pleine tout autour , les couleurs en RGB  sur 3 pixels*/
+    border: solid rgba(72, 0, 0, 1) 3px;
+    /*on defini sa hauteur*/
+    height: 3em;
+    /*sa largeur*/
+    width: 100%;
+    /*les elements dans les champs sont centrés*/
+    text-align: center;
+    /*et on leur applique une petite marge*/
+    margin: 0.5em;
+}
+
+
+
+/* fin de formulaire de connexion */
+
+/*section header*/
+
+/* mise en place du viewport mobile et tablette pour la navbar */
+
+/*le desktop est deja defini plus haut */
+
+/*taille maxi de l'ecran pour afficher le menu burger est de 1200 pixels , au dela , on passe en vue desktop*/
+
+@media (max-width: 1200px) {
+    .menu-button-container {
+        /*disposition flex*/
+        display: flex;
+    }
+    .menu {
+        /*on definit sa place */
+        position: absolute;
+        /*tout en haut*/
+        top: 0;
+        /*on lui met une marge superieur en l'alignant avec la ligne blanche de la navbar*/
+        margin-top: 50px;
+        /*on marge a 0 , ici pas besoin d'unité de mesure , il se met en auto et se colle a la page*/
+        right: 0;
+        /*on place les elements en colonne*/
+        flex-direction: column;
+        /*on l'etale sur toute la largeur de la page*/
+        width: 100%;
+        /*on centre les elements*/
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*quand la checkbox est decochée*/
+    #menu-toggle~.menu li {
+        /*on place toute les valeurs a 0 , rendant invisible les elements */
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        /*on applique une transition pour eviter un effet de pop et que ce soit plus attrayant*/
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    /*quand la checkbox est cochée*/
+    #menu-toggle:checked~.menu li {
+        /*on vient mettre une ligne entre chaque elements de la liste*/
+        border: 1px solid #333;
+        /*on defini la hauteur surlaquelle elle va se deplier*/
+        height: 2.5em;
+        /*on lui met une marge interne*/
+        padding: 0.5em;
+        /*et la encore un effet de transition pour eviter le pop visuel */
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    /*pour les elements de la liste*/
+    .menu>li {
+        /*disposition flex*/
+        display: flex;
+        /*on centre le tout*/
+        justify-content: center;
+        /*on etale sur la largeur*/
+        width: 100%;
+        /*le texte est defini en blanc*/
+        color: white;
+        /*on assombri le fond avec une couleur plus foncé de peu que les lignes pour garder une certaine harmonie de couleur*/
+        background-color: #222;
+    }
+
+}
+
+
+
+/*fin de la section header*/
+
+/*debut de la section main */
+
+/*pour la section mobile*/
+
+@media screen and ( max-width: 800px) {
+
+    .fig-list {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        margin-bottom: 2em;
+
+    }
+
+
+
+
+    .delbut {
+        width: 50%;
+        text-align: center;
+        font-family: 'Black Ops One', cursive;
+        font-size: 1em;
+    }
+
+    .picture-list {
+        width: auto;
+        height: 250px;
+    }
+
+    .namelink {
+        font-family: 'Black Ops One', cursive;
+        font-size: 2em;
+    }
+
+    .display-cards {
+        padding: 0.5em;
+    }
+
+    .display-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .name {
+        color: white;
+        font-family: 'Black Ops One', cursive;
+        font-size: 3em;
+
+
+    }
+    .picture-display {
+        width: auto;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+
+
+    }
+
+    .content {
+        color: white;
+        border: solid white 3px;
+        background-color: black;
+        font-family: 'Special Elite', cursive;
+        padding: 0.8em;
+        margin: 1em;
+    }
+
+    .formFig {
+        margin: 1em;
+    }
+    .check {
+        display: flex;
+        margin: 0.3em;
+
+    }
+    .check>input {
+        width: 25px;
+        height: auto;
+    }
+    .displayPaint {
+        display: flex;
+        padding: 1em;
+        align-items: center;
+
+    }
+    .paint {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        margin-left: 1em;
+
+        ;
+    }
+    .ColorPicture {
+        width: 80px;
+        height: auto;
+
+    }
+    .ColorName {
+        color: white;
+        margin: 1em;
+        font-size: 1.2em;
+
+    }
+
+
+    .upBack {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5em;
+    }
+    .updateBut,
+    .backBut {
+        border: solid white 2px;
+        text-align: center;
+        background: #333;
+        border-radius: 10px;
+        text-decoration: none;
+        padding: 0.2em;
+        margin: 0.5em;
+    }
+
+}
+
+/*fin de la section mobile*/
+
+/*de but de la section tablette*/
+
+@media screen and (min-width: 801px) and (max-width: 1200px) {
+    .fig-list {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        margin-bottom: 2em;
+
+    }
+
+
+    .delbut {
+        width: 40%;
+        text-align: center;
+        font-family: 'Black Ops One', cursive;
+        font-size: 1.5em;
+    }
+
+    .picture-list {
+        width: auto;
+        height: 450px;
+    }
+
+    .namelink {
+        font-family: 'Black Ops One', cursive;
+        font-size: 3em;
+    }
+
+    .display-cards {
+        padding: 2em;
+    }
+
+    .display-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .name {
+        color: white;
+        font-family: 'Black Ops One', cursive;
+        font-size: 3em;
+
+
+    }
+    .picture-display {
+        width: auto;
+        height: 700px;
+        margin-left: auto;
+        margin-right: auto;
+
+
+    }
+
+    .content {
+        color: white;
+        border: solid white 3px;
+        background-color: black;
+        font-family: 'Special Elite', cursive;
+        padding: 0.8em;
+        margin: 5em;
+    }
+
+    .formFig {
+        margin-left: 1.2em;
+    }
+    .check {
+        display: flex;
+        margin: 1em;
+
+    }
+    .check>input {
+        width: 25px;
+        height: auto;
+    }
+    .displayPaint {
+        display: flex;
+        padding: 1em;
+        align-items: center;
+
+    }
+    .paint {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        margin-left: 1em;
+
+        ;
+    }
+    .ColorPicture {
+        width: 80px;
+        height: auto;
+
+    }
+    .ColorName {
+        color: white;
+        margin: 1em;
+        font-size: 1.2em;
+
+    }
+
+    .upBack {
+        display: flex;
+        flex-direction: column;
+        width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5em;
+    }
+    .updateBut,
+    .backBut {
+        border: solid white 2px;
+        text-align: center;
+        background: #333;
+        border-radius: 10px;
+        text-decoration: none;
+        padding: 0.2em;
+        margin: 0.5em;
+    }
+
+}
+
+/*fin de section tablette*/
+
+/*debut de section desktop*/
+
+@media screen and (min-width: 1201px) {
+    .fig-list {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        margin-bottom: 2em;
+
+    }
+
+
+    .delbut {
+        width: 40%;
+        text-align: center;
+        font-family: 'Black Ops One', cursive;
+        font-size: 1.5em;
+    }
+
+    .picture-list {
+        width: auto;
+        height: 600px;
+    }
+
+    .namelink {
+        font-family: 'Black Ops One', cursive;
+        font-size: 3em;
+    }
+
+    .display-cards {
+        padding: 2em;
+    }
+
+    .display-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .name {
+        color: white;
+        font-family: 'Black Ops One', cursive;
+        font-size: 5em;
+
+
+    }
+    .picture-display {
+        width: auto;
+        height: 700px;
+        margin-left: auto;
+        margin-right: auto;
+
+
+    }
+
+    .content {
+        color: white;
+        border: solid white 3px;
+        background-color: black;
+        font-family: 'Special Elite', cursive;
+        padding: 0.8em;
+        margin: 5em;
+        font-size: 1.3em;
+    }
+
+    .formFig {
+        margin-left: 5em;
+
+    }
+    p {
+        margin-left: 3em;
+    }
+    .formFig>p {
+        margin-left: 0em;
+    }
+    .check {
+        display: flex;
+        margin: 3em;
+
+    }
+    .check>input {
+        width: 25px;
+        height: auto;
+    }
+    .displayPaint {
+        display: flex;
+        padding: 1em;
+        align-items: center;
+        margin-left: 4em;
+
+    }
+    .paint {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        margin-left: 1em;
+
+        ;
+    }
+    .ColorPicture {
+        width: 80px;
+        height: auto;
+
+    }
+    .ColorName {
+        color: white;
+        margin: 1em;
+        font-size: 1.2em;
+
+    }
+
+    .upBack {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5em;
+    }
+    .updateBut,
+    .backBut {
+        border: solid white 2px;
+        text-align: center;
+        background: #333;
+        border-radius: 10px;
+        text-decoration: none;
+        padding: 0.2em;
+        margin: 0.5em;
+        font-size: 1.2em;
+    }
+
+}
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/**/
+
+/**/
+
+/*footer*/
+
+.footer {
+    border-top: solid white 3px;
+    background: linear-gradient(to left, rgba(69, 1, 2, 1), rgba(40, 40, 38, 1));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: 2em;
+    position: inherit;
+    bottom: 0;
 }

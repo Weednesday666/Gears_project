@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     input.addEventListener('keyup', () => {
         //on declare une variable qui va recuperer ce qui a été taper
         let textFind = document.querySelector('#search').value;
-        console.log(textFind);
-        /* don't forget to delete your console.log !!!!!*/
         //la variable va envoyer au php ce qu'elle recoit , et la , le php prends la main
         let req = new Request('https://thomascavelier.sites.3wa.io/GEARS_FINAL/fig', {
             method: "POST",
@@ -22,8 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(res => res.text())
             //ensuite on va afficher le resultat de la recherche dans le html
             .then(res => {
-                document.getElementById("listOfFigs").innerHTML = res;
+                document.querySelector("#listOfFigs").innerHTML = res;
             });
 
     });
+
 });

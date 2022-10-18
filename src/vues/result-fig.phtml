@@ -5,7 +5,7 @@
         <!--liste de liens menant vers la figurine specifique-->
         <li class="fig-list">
             <!--affichage de l'image cliquable -->
-            <a href="display/<?= $fig['ID'] ?>"><img src="public/uploads/<?= htmlspecialchars( $fig['picture']) ?>" alt= "picture" class="principal-picture"/></a>
+            <a href="display/<?= $fig['ID'] ?>"><img src="public/uploads/<?= htmlspecialchars( $fig['picture']) ?>" alt= "picture" class="picture-list"/></a>
             <!--le champ du nom est protegé-->
             <a href="display/<?= $fig['ID'] ?>"><?= htmlspecialchars($fig['name'] ) ?></a>
             <!--lien de suppression de la figurine ciblée-->

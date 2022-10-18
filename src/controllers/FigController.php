@@ -16,6 +16,19 @@ class FigController {
             Render::render("display-fig", ['Fig'=>$figs]);
         }
     }
+    // afichage de la figurine ciblée pour la partie front
+    public static function showPublicFig($id = null){
+        $figs = null;
+        //connexion a la db
+        $db = Db::getDb();
+        //si on a un id de figurine , alors
+        if (isset($id)) {
+            // On affiche une seule mini
+            $figs = Fig::getFig($id);
+            //on envoi le rendu de l'affichage d'une seule mini
+            Render::render("public-display", ['Fig'=>$figs]);
+        }
+    }
 
     //creation d'une mini complete
     public static function addFig() {
@@ -161,8 +174,8 @@ class FigController {
             header("Location: https://thomascavelier.sites.3wa.io/GEARS_FINAL/index ");
             exit();
         }
-        
-        
+
+
 
     }
 }
